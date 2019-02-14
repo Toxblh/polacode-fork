@@ -1,13 +1,13 @@
 {
-  "name": "polacode",
-  "displayName": "Polacode",
-  "description": "📸  Polaroid for your code",
-  "version": "0.2.2",
+  "name": "polacode-fork",
+  "displayName": "Polacode-fork",
+  "description": "📸  Polaroid for your code. This is fork with trnsparent background",
+  "version": "0.2.3",
   "repository": {
     "type": "git",
-    "url": "https://github.com/octref/polacode.git"
+    "url": "https://github.com/toxblh/polacode.git"
   },
-  "publisher": "pnp",
+  "publisher": "Toxblh",
   "keywords": [
     "polacode",
     "polaroid",
@@ -24,13 +24,13 @@
   "engines": {
     "vscode": "^1.19.0"
   },
-  "activationEvents": ["onCommand:polacode.activate"],
+  "activationEvents": ["onCommand:polacode-fork.activate"],
   "main": "./src/extension",
   "contributes": {
     "commands": [
       {
-        "command": "polacode.activate",
-        "title": "Polacode 📸"
+        "command": "polacode-fork.activate",
+        "title": "Polacode fork 📸"
       }
     ]
   }

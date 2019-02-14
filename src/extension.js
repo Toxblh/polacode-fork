@@ -13,7 +13,7 @@ function activate(context) {
   const indexUri = vscode.Uri.file(htmlPath)
 
   let lastUsedImageUri = vscode.Uri.file(path.resolve(homedir(), 'Desktop/code.png'))
-  vscode.commands.registerCommand('polacode.shoot', serializedBlob => {
+  vscode.commands.registerCommand('polacode-fork.shoot', serializedBlob => {
     vscode.window
       .showSaveDialog({
         defaultUri: lastUsedImageUri,
@@ -29,14 +29,14 @@ function activate(context) {
       })
   })
 
-  vscode.commands.registerCommand('polacode.activate', () => {
+  vscode.commands.registerCommand('polacode-fork.activate', () => {
     vscode.commands
       .executeCommand('vscode.previewHtml', indexUri, 2, 'Polacode 📸', {
         allowScripts: true
       })
       .then(() => {
         const fontFamily = vscode.workspace.getConfiguration('editor').fontFamily
-        const bgColor = context.globalState.get('polacode.bgColor', '#2e3440')
+        const bgColor = context.globalState.get('polacode-fork.bgColor', '#2e3440')
         vscode.commands.executeCommand('_workbench.htmlPreview.postMessage', indexUri, {
           type: 'init',
           fontFamily,
@@ -54,9 +54,9 @@ function activate(context) {
     }
   })
 
-  vscode.commands.registerCommand('polacode._onmessage', ({ type, data }) => {
+  vscode.commands.registerCommand('polacode-fork._onmessage', ({ type, data }) => {
     if (type === 'updateBgColor') {
-      context.globalState.update('polacode.bgColor', data.bgColor)
+      context.globalState.update('polacode-fork.bgColor', data.bgColor)
     } else if (type === 'invalidPasteContent') {
       vscode.window.showInformationMessage(
         'Pasted content is invalid. Only copy from VS Code and check if your shortcuts for copy/paste have conflicts.'

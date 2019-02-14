@@ -27,7 +27,7 @@ function postMessage(type, data) {
   window.parent.postMessage(
     {
       command: 'did-click-link',
-      data: `command:polacode._onmessage?${encodeURIComponent(JSON.stringify({ type, data }))}`
+      data: `command:polacode-fork._onmessage?${encodeURIComponent(JSON.stringify({ type, data }))}`
     },
     'file://'
   )
@@ -36,7 +36,7 @@ function shoot(serializedBlob) {
   window.parent.postMessage(
     {
       command: 'did-click-link',
-      data: `command:polacode.shoot?${encodeURIComponent(JSON.stringify(serializedBlob))}`
+      data: `command:polacode-fork.shoot?${encodeURIComponent(JSON.stringify(serializedBlob))}`
     },
     'file://'
   )
