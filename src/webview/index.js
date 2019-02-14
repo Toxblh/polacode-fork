@@ -62,7 +62,7 @@ function updateEnvironment(snippetBgColor) {
 
   // update backdrop color
   if (isDark(snippetBgColor)) {
-    snippetContainerNode.style.backgroundColor = '#f2f2f2'
+    snippetContainerNode.style.backgroundColor = 'transparent'
   } else {
     snippetContainerNode.style.background = 'none'
   }
@@ -164,7 +164,7 @@ window.addEventListener('message', e => {
       // update backdrop color, using bgColor from last pasted snippet
       // cannot deduce from initialHtml since it's always using Nord color
       if (isDark(bgColor)) {
-        snippetContainerNode.style.backgroundColor = '#f2f2f2'
+        snippetContainerNode.style.backgroundColor = 'transparent'
       } else {
         snippetContainerNode.style.background = 'none'
       }
