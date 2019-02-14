@@ -1,3 +1,7 @@
+# FORK - CHANGES:
+
+I removed white background - it's ugly for all not white backgrounds
+
 # Polacode
 
 Polaroid for your code 📸.
@@ -13,7 +17,7 @@ Happy Coding!
 
 You have spent countless hours finding the perfect [JavaScript grammar](https://marketplace.visualstudio.com/search?term=javascript%20grammar&target=VSCode&category=All%20categories&sortBy=Relevance), matching it with a [sleek-looking VS Code theme](https://marketplace.visualstudio.com/search?target=VSCode&category=Themes&sortBy=Downloads), trying out all the [best programming fonts](https://www.slant.co/topics/67/~best-programming-fonts).
 
-You take three days porting over [your theme](https://github.com/wesbos/cobalt2-vscode) before starting to use VS Code.  
+You take three days porting over [your theme](https://github.com/wesbos/cobalt2-vscode) before starting to use VS Code.
 You shell out $200 for [italic cursive html attributes](https://www.typography.com/blog/introducing-operator).
 
 The code has to look right.
@@ -54,7 +58,7 @@ Download button animation is made with [Vivus](https://github.com/maxwellito/viv
 
 ## Contribution
 
-Contribution is extremely unwelcome.  
+Contribution is extremely unwelcome.
 Please open an issue first so I can stop you from complicating the UX.
 
 ## License
