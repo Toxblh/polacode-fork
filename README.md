@@ -6,7 +6,7 @@ I removed white background - it's ugly for all not white backgrounds
 
 Polaroid for your code 📸.
 
-[MarketPlace Page](https://marketplace.visualstudio.com/items?itemName=pnp.polacode)
+[MarketPlace Page](https://marketplace.visualstudio.com/items?itemName=Toxblh.polacode-fork)
 
 ![usage](https://github.com/octref/polacode/raw/master/demo/usage.gif)
 
