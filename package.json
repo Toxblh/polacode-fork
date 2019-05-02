@@ -37,5 +37,9 @@
         "title": "Polacode fork 📸"
       }
     ]
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/vscode": "^1.33.0"
   }
 }
