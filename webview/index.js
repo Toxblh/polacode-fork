@@ -4,6 +4,9 @@
   const snippetNode = document.getElementById('snippet')
   const snippetContainerNode = document.getElementById('snippet-container')
   const obturateur = document.getElementById('save')
+  const shadowsOption = document.getElementById('optShadows')
+  const transparentOption = document.getElementById('optTransparent')
+  const colorOption = document.getElementById('optColor')
 
   const getInitialHtml = fontFamily => {
     const cameraWithFlashEmoji = String.fromCodePoint(128248)
@@ -109,6 +112,27 @@
     const code = e.clipboardData.getData('text/plain')
 
     updateCode(innerHTML, code)
+  })
+
+  shadowsOption.addEventListener('change', () => {
+    const OPT_DISABLED_CLASS = 'snippet--no-shadows'
+
+    if (!shadowsOption.checked) snippetNode.classList.add(OPT_DISABLED_CLASS)
+    else snippetNode.classList.remove(OPT_DISABLED_CLASS)
+  })
+
+  transparentOption.addEventListener('change', () => {
+    if (transparentOption.checked) {
+      snippetContainerNode.style.backgroundColor = 'transparent'
+      colorOption.disabled = true
+    } else {
+      colorOption.disabled = false
+      snippetContainerNode.style.backgroundColor = colorOption.value
+    }
+  })
+
+  colorOption.addEventListener('keydown', () => {
+    setTimeout(() => (snippetContainerNode.style.backgroundColor = colorOption.value), 0)
   })
 
   obturateur.addEventListener('click', () => {
