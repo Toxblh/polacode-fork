@@ -2,7 +2,7 @@
   "name": "polacode-fork",
   "displayName": "Polacode-fork",
   "description": "📸  Polaroid for your code. This is fork with trnsparent background",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/toxblh/polacode.git"
