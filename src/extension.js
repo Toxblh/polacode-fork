@@ -11,46 +11,51 @@ const writeSerializedBlobToFile = (serializeBlob, fileName) => {
 }
 
 function activate(context) {
-  const panel = vscode.window.createWebviewPanel('polaCode', 'PolaCode', vscode.ViewColumn.Two, {
-    enableScripts: true,
-    localResourceRoots: [vscode.Uri.file(path.join(context.extensionPath, 'webview'))]
-  })
+  let panel
 
-  panel.webview.onDidReceiveMessage(
-    message => {
-      switch (message.command) {
-        case 'polacode-fork.shoot':
-          vscode.window
-            .showSaveDialog({
-              defaultUri: lastUsedImageUri,
-              filters: {
-                Images: ['png']
-              }
-            })
-            .then(uri => {
-              if (uri) {
-                writeSerializedBlobToFile(message.data, uri.fsPath)
-                lastUsedImageUri = uri
-              }
-            })
-          return
+  const panelHandlers = () =>
+    panel.webview.onDidReceiveMessage(
+      message => {
+        switch (message.command) {
+          case 'polacode-fork.shoot':
+            vscode.window
+              .showSaveDialog({
+                defaultUri: lastUsedImageUri,
+                filters: {
+                  Images: ['png']
+                }
+              })
+              .then(uri => {
+                if (uri) {
+                  writeSerializedBlobToFile(message.data, uri.fsPath)
+                  lastUsedImageUri = uri
+                }
+              })
+            return
 
-        case 'polacode-fork._onmessage':
-          if (message.data.type === 'updateBgColor') {
-            context.globalState.update('polacode-fork.bgColor', message.data.data.bgColor)
-          } else if (message.data.type === 'invalidPasteContent') {
-            vscode.window.showInformationMessage(
-              'Pasted content is invalid. Only copy from VS Code and check if your shortcuts for copy/paste have conflicts.'
-            )
-          }
-          return
-      }
-    },
-    undefined,
-    context.subscriptions
-  )
+          case 'polacode-fork._onmessage':
+            if (message.data.type === 'updateBgColor') {
+              context.globalState.update('polacode-fork.bgColor', message.data.data.bgColor)
+            } else if (message.data.type === 'invalidPasteContent') {
+              vscode.window.showInformationMessage(
+                'Pasted content is invalid. Only copy from VS Code and check if your shortcuts for copy/paste have conflicts.'
+              )
+            }
+            return
+        }
+      },
+      undefined,
+      context.subscriptions
+    )
 
   vscode.commands.registerCommand('polacode-fork.activate', () => {
+    panel = vscode.window.createWebviewPanel('polaCode', 'PolaCode', vscode.ViewColumn.Two, {
+      enableScripts: true,
+      localResourceRoots: [vscode.Uri.file(path.join(context.extensionPath, 'webview'))]
+    })
+
+    panelHandlers()
+
     const dom2imageJSPath = vscode.Uri.file(path.join(context.extensionPath, 'webview', 'dom2image.js'))
     const dom2imageJS = dom2imageJSPath.with({ scheme: 'vscode-resource' })
 
@@ -74,7 +79,6 @@ function activate(context) {
 
   vscode.window.onDidChangeTextEditorSelection(e => {
     if (e.selections[0] && !e.selections[0].isEmpty) {
-
       // TODO: Redo from use clipboard to another way
       // let editor = vscode.window.activeTextEditor
       // const texxt = editor.document.getText(editor.selection)
