@@ -104,6 +104,7 @@ function getHTML(indexJS, vivusJS, dom2imageJS) {
         border-radius: 4px;
         transition: opacity 0.4s;
       }
+
       #snippet {
         display: flex;
         padding: 18px;
@@ -111,6 +112,11 @@ function getHTML(indexJS, vivusJS, dom2imageJS) {
         border-radius: 5px;
         box-shadow: rgba(0, 0, 0, 0.55) 0px 20px 68px;
       }
+
+      .snippet--no-shadows {
+        box-shadow: none!important;
+      }
+
       #snippet > div > div {
         display: flex;
         flex-wrap: wrap;
@@ -121,20 +127,95 @@ function getHTML(indexJS, vivusJS, dom2imageJS) {
         margin-bottom: 60px;
         text-align: center;
       }
+
       .obturateur {
         width: 64px;
         height: 64px;
       }
+
       .obturateur * {
         transition: stroke 0.4s;
       }
+
       .obturateur:not(.filling) path {
         opacity: 0.5;
+      }
+
+
+      .options-container {
+        margin-bottom: 20px;
+        display: flex;
+        font-size: 1em;
+      }
+
+      .options-title {
+        padding: 1em 2em;
+      }
+
+      .options {
+        display: flex;
+        align-items: stretch;
+        border-right: none;
+        user-select: none;
+      }
+
+      .option {
+        align-self: stretch;
+        margin: 0.5em;
+      }
+
+      .option__label {
+        display: block;
+        position: relative;
+        transition: all 0.15s ease-out;
+        cursor: pointer;
+        padding: 1em 2em;
+        border-color: gray;
+        border: 1px solid;
+      }
+
+      .option > input[type=checkbox] {
+        z-index: -10;
+        position: absolute;
+        opacity: 0;
+      }
+
+      .option > input[type=text] {
+        margin-left: 5px;
+      }
+
+      input:checked + .option__label {
+        background-color: rgba(65, 105, 225, 1);
+        border-color: rgb(57, 93, 199);
+        color: #fff;
       }
     </style>
   </head>
 
   <body>
+
+    <div class="options-container">
+      <div class="options-title">Options</div>
+      <div class="options">
+        <div class="option">
+          <input type="checkbox" name="optShadows" id="optShadows" checked>
+          <label for="optShadows" class="option__label">
+            Shadow
+          </label>
+        </div>
+        <div class="option">
+          <input type="checkbox" name="optTransparent" id="optTransparent" checked>
+          <label for="optTransparent" class="option__label">
+            Transparent
+          </label>
+        </div>
+        <div class="option">
+          <label for="optColor">Color</label>
+          <input type="text" name="optColor" id="optColor" placeholder="color" value="#f2f2f2">
+        </div>
+      </div>
+    </div>
+
     <div id="snippet-container">
       <div
         id="snippet"
@@ -148,7 +229,7 @@ function getHTML(indexJS, vivusJS, dom2imageJS) {
             <span style="color: #8fbcbb;">console</span><span style="color: #eceff4;">.</span
             ><span style="color: #88c0d0;">log</span><span style="color: #d8dee9;">(</span
             ><span style="color: #eceff4;">'</span
-            ><span style="color: #a3be8c;">0. Run command \`Polacode ðŸ“¸ \`</span
+            ><span style="color: #a3be8c;">0. Run command \`Polacode ?“¸ \`</span
             ><span style="color: #eceff4;">'</span><span style="color: #d8dee9;">)</span>
           </div>
           <div>
@@ -167,7 +248,7 @@ function getHTML(indexJS, vivusJS, dom2imageJS) {
           <div>
             <span style="color: #8fbcbb;">console</span><span style="color: #eceff4;">.</span
             ><span style="color: #88c0d0;">log</span><span style="color: #d8dee9;">(</span
-            ><span style="color: #eceff4;">'</span><span style="color: #a3be8c;">3. Click the button ðŸ“¸ </span
+            ><span style="color: #eceff4;">'</span><span style="color: #a3be8c;">3. Click the button ?“¸ </span
             ><span style="color: #eceff4;">'</span><span style="color: #d8dee9;">)</span>
           </div>
         </div>
