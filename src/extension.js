@@ -117,6 +117,15 @@ function getHTML(indexJS, vivusJS, dom2imageJS) {
         box-shadow: none!important;
       }
 
+      #snippet > div {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        max-width: 100%;
+        white-space: pre-wrap !important;
+        word-break: break-all;
+      }
+
       #snippet > div > div {
         display: flex;
         flex-wrap: wrap;
