@@ -53,6 +53,17 @@ function activate(context) {
       enableScripts: true,
       localResourceRoots: [vscode.Uri.file(path.join(context.extensionPath, 'webview'))]
     })
+    
+    const selectionHandler = vscode.window.onDidChangeTextEditorSelection(e => {
+      if (e.selections[0] && !e.selections[0].isEmpty) {
+        vscode.commands.executeCommand('editor.action.clipboardCopyAction')
+        panel.webview.postMessage({
+          type: 'update'
+        })
+      }
+    })
+
+    panel.onDidDispose(() => selectionHandler.dispose())
 
     panelHandlers()
 
@@ -75,17 +86,6 @@ function activate(context) {
       fontFamily,
       bgColor
     })
-  })
-
-  vscode.window.onDidChangeTextEditorSelection(e => {
-    if (e.selections[0] && !e.selections[0].isEmpty) {
-      // TODO: Redo from use clipboard to another way
-      // let editor = vscode.window.activeTextEditor
-      // const texxt = editor.document.getText(editor.selection)
-
-      vscode.commands.executeCommand('editor.action.clipboardCopyAction')
-      panel.webview.postMessage({ type: 'update' })
-    }
   })
 }
 
@@ -229,7 +229,7 @@ function getHTML(indexJS, vivusJS, dom2imageJS) {
             <span style="color: #8fbcbb;">console</span><span style="color: #eceff4;">.</span
             ><span style="color: #88c0d0;">log</span><span style="color: #d8dee9;">(</span
             ><span style="color: #eceff4;">'</span
-            ><span style="color: #a3be8c;">0. Run command \`Polacode ?“¸ \`</span
+            ><span style="color: #a3be8c;">0. Run command \`Polacode ?â€œÂ¸ \`</span
             ><span style="color: #eceff4;">'</span><span style="color: #d8dee9;">)</span>
           </div>
           <div>
@@ -248,7 +248,7 @@ function getHTML(indexJS, vivusJS, dom2imageJS) {
           <div>
             <span style="color: #8fbcbb;">console</span><span style="color: #eceff4;">.</span
             ><span style="color: #88c0d0;">log</span><span style="color: #d8dee9;">(</span
-            ><span style="color: #eceff4;">'</span><span style="color: #a3be8c;">3. Click the button ?“¸ </span
+            ><span style="color: #eceff4;">'</span><span style="color: #a3be8c;">3. Click the button ?â€œÂ¸ </span
             ><span style="color: #eceff4;">'</span><span style="color: #d8dee9;">)</span>
           </div>
         </div>
