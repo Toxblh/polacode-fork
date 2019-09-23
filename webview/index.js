@@ -56,7 +56,9 @@
     return getBrightness(hexColor) < 128
   }
   function getSnippetBgColor(html) {
-    return html.match(/background-color: (#[a-fA-F0-9]+)/)[1]
+    const div = document.createElement('div')
+    div.innerHTML = html
+    return div.querySelector('div').style.backgroundColor
   }
 
   function updateEnvironment(snippetBgColor) {
