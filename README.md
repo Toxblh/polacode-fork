@@ -1,7 +1,17 @@
-# FORK - CHANGES:
+# FORK:
 
-I removed white background - it's ugly for all not white backgrounds
+- Removed white background - it's ugly for all not white backgrounds
+- Added menu for customization
+- Fixed bugs
 
+![image](https://user-images.githubusercontent.com/2198153/65693199-d15a7680-e06b-11e9-937e-16a095702a23.png)
+
+## Contribution
+
+Contribution is extremely <b>welcome<b/>.
+
+------ 
+Original part
 # Polacode
 
 Polaroid for your code 📸.
